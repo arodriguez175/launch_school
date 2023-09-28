@@ -10,19 +10,17 @@ Input:
 Output:
 - odd numbers
 
-Implicit Terms:
-- inclusive = including, to not leave out any part
-
 Rules:
 - only the odd numbers should be logged
 - each number must be on a separate line
 
 Mental Model:
-- console log the odd numbers from numbers 1-99, including everything in between, 
-with each number on a separate line
+- console log the odd numbers from numbers 1-99 with each number on a separate line
 
 Examples/Test Cases:
-- Input: none
+- Input:
+none
+
 - Output:
 1
 3
