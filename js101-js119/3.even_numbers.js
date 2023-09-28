@@ -12,6 +12,7 @@ Output:
 
 Rules:
 - must have a range from 1-99
+- must log only even numbers
 - each number must be on a separate line
 
 Mental Model:
