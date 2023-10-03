@@ -67,6 +67,11 @@ function getInputInteger() {
   do {
     console.log('Enter an integer greater than 0:');
     integer = parseInt(readlineSync.prompt());
+
+    if (isNaN(integer) || integer <= 0) {
+      console.log('Invalid input. Please try again.');
+    }
+
   } while (isNaN(integer) || integer <= 0);
   
   return integer;
@@ -78,6 +83,11 @@ function getInputChoice() {
   do {
     console.log('Enter "s" to compute the sum, or "p" to compute the product. ');
     choice = readlineSync.prompt().toLocaleLowerCase();
+
+    if (choice !== 's' && choice !== 'p') {
+      console.log('Invalid selection. Please try again.');
+    }
+
   } while (choice !== 's' && choice !== 'p');
   
   return choice;
@@ -113,8 +123,6 @@ function main() {
   } else if (choice === 'p') {
     const product = calculateProduct(integer);
     console.log(`The product of the integers between 1 and ${integer} is ${product}`);
-  } else {
-    console.log('Unknown selection');
   }
 }
 
@@ -124,30 +132,83 @@ main();
 
 /*
 Algorithm:
-- input an array of integers (without parsing to a number yet)
-- get rid of the brackets from the input using .replace('[', '').replace(']', '')
-- turn this string of numbers into a real array using .split(',')
-- create a new array using map() and the previous array
-- parse each element into a number using parseInt()
-- use reduce() to sum all numbers
+- input an array of integers
+- convert the input from a string to an actual array of integers
+- remove the brackets using replace()
+- turn the string into an array of strings with split()
+- turn the string elements into integers using map() and parseInt()
+- if user entered an invalid input, prompt again
+- calculate sum using .reduce()
+- calculate product using .reduce()
+- if user entered s for choice, then output the sum
+- if user entered p for choice, then output the product
+- if user entered anything other than s or p for choice, prompt again
 */
 
 // let readlineSync = require('readline-sync');
 
-// console.log('Enter an array of integers greater than 0');
-// let integers = readlineSync.prompt();
+// function getInputIntegers() {
+//   let integers;
 
-// let array = JSON.parse(integers);
+//   do {
+//     console.log('Enter an array of integers greater than 0');
 
-// console.log('Enter "s" to compute the sum, or "p" to compute the product. ');
-// let choice = readlineSync.prompt();
+//     integers = readlineSync.prompt();
+    
+//     // input is a string by default, remove the brackets
+//     let string = integers.replace('[', '').replace(']', '');
 
-// if (choice === 's') {
-//   let sum = array.reduce((accum, number) => accum + number, 0);
-//   console.log(`The sum of the integers between 1 and [${array}] is ${sum}`);
-// } else if (choice === 'p') {
-//   let product = array.reduce((accum, number) => accum * number, 1);
-//   console.log(`The product of the integers between 1 and [${array}] is ${product}`);
-// } else {
-//   console.log('Unknown selection');
+//     // turn string into an array
+//     let numbersString = string.split(',');
+
+//     // make each string element into a parsed integer
+//     integers = numbersString.map(element => parseInt(element));
+
+//     if (integers.some(isNaN) || integers.some(num => num <= 0)) {
+//       console.log('Invalid input. Please try again.');
+//     }
+
+//   } while (integers.some(isNaN) || integers.some(num => num <= 0));
+
+//   return integers;
 // }
+
+// function getInputChoice() {
+//   let choice;
+//   do {
+//     console.log('Enter "s" to compute the sum, or "p" to compute the product. ');
+//     choice = readlineSync.prompt().toLocaleLowerCase();
+
+//     if (choice !== 's' && choice !== 'p') {
+//       console.log('Invalid selection. Please try again.');
+//     }
+
+//   } while (choice !== 's' && choice !== 'p');
+  
+//   return choice;
+// }
+
+// function calculateSum(integers) {
+//   let sum = integers.reduce((accum, number) => accum + number, 0);
+//   return sum;
+// }
+
+// function calculateProduct(integers) {
+//   let product = integers.reduce((accum, number) => accum * number, 1);
+//   return product;
+// }
+
+// function main() {
+//   const integers = getInputIntegers();
+//   const choice  = getInputChoice();
+
+//   if (choice === 's') {
+//     const sum = calculateSum(integers);
+//     console.log(`The sum of the integers between 1 and [${integers}] is ${sum}`);
+//   } else if (choice === 'p') {
+//     const product = calculateProduct(integers);
+//     console.log(`The product of the integers between 1 and [${integers}] is ${product}`);
+//   }
+// }
+
+// main();
