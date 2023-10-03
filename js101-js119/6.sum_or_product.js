@@ -86,3 +86,35 @@ if (choice === 's') {
 } else {
   console.log('Unknown selection');
 }
+
+// What if the input was an array of integers instead of just a single integer?
+
+/*
+Algorithm:
+- input an array of integers (without parsing to a number yet)
+- get rid of the brackets from the input using .replace('[', '').replace(']', '')
+- turn this string of numbers into a real array using .split(',')
+- create a new array using map() and the previous array
+- parse each element into a number using parseInt()
+- use reduce() to sum all numbers
+*/
+
+// let readlineSync = require('readline-sync');
+
+// console.log('Enter an array of integers greater than 0');
+// let integers = readlineSync.prompt();
+
+// let array = JSON.parse(integers);
+
+// console.log('Enter "s" to compute the sum, or "p" to compute the product. ');
+// let choice = readlineSync.prompt();
+
+// if (choice === 's') {
+//   let sum = array.reduce((accum, number) => accum + number, 0);
+//   console.log(`The sum of the integers between 1 and [${array}] is ${sum}`);
+// } else if (choice === 'p') {
+//   let product = array.reduce((accum, number) => accum * number, 1);
+//   console.log(`The product of the integers between 1 and [${array}] is ${product}`);
+// } else {
+//   console.log('Unknown selection');
+// }
