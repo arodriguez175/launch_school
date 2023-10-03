@@ -61,31 +61,64 @@ or another key for the product (p) of 1-integer
 
 let readlineSync = require('readline-sync');
 
-console.log('Enter an integer greater than 0:');
-let integer = parseInt(readlineSync.prompt());
-
-console.log('Enter "s" to compute the sum, or "p" to compute the product. ');
-let choice = readlineSync.prompt();
-
-if (choice === 's') {
-  let sum = 0;
+function getInputInteger() {
+  // keep prompting the user if the integer is not a number or <= 0
+  let integer;
+  do {
+    console.log('Enter an integer greater than 0:');
+    integer = parseInt(readlineSync.prompt());
+  } while (isNaN(integer) || integer <= 0);
   
+  return integer;
+}
+
+function getInputChoice() {
+  // keep prompting the user if choice is not s and p
+  let choice;
+  do {
+    console.log('Enter "s" to compute the sum, or "p" to compute the product. ');
+    choice = readlineSync.prompt().toLocaleLowerCase();
+  } while (choice !== 's' && choice !== 'p');
+  
+  return choice;
+}
+
+function calculateSum(integer) {
+  let sum = 0;
+
   for (let i = 1; i <= integer; i++) {
     sum += i;
   }
-  
-  console.log(`The sum of the integers between 1 and ${integer} is ${sum}`);
-} else if (choice === 'p') {
+
+  return sum;
+}
+
+function calculateProduct(integer) {
   let product = 1;
-  
+
   for (let i = 1; i <= integer; i++) {
     product *= i;
   }
-  
-  console.log(`The product of the integers between 1 and ${integer} is ${product}`);
-} else {
-  console.log('Unknown selection');
+
+  return product;
 }
+
+function main() {
+  const integer = getInputInteger();
+  const choice = getInputChoice();
+
+  if (choice === 's') {
+    const sum = calculateSum(integer);
+    console.log(`The sum of the integers between 1 and ${integer} is ${sum}`);
+  } else if (choice === 'p') {
+    const product = calculateProduct(integer);
+    console.log(`The product of the integers between 1 and ${integer} is ${product}`);
+  } else {
+    console.log('Unknown selection');
+  }
+}
+
+main();
 
 // What if the input was an array of integers instead of just a single integer?
 
