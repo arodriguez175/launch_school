@@ -9,7 +9,7 @@ Input:
 - a number
 
 Output:
-- the result of the number sqaured
+- the result of the number squared
 
 Rules:
 - must use the previous multiply function along with this function
@@ -35,10 +35,10 @@ function multiply(num1, num2) {
   return num1 * num2;
 }
 
-function sqaure(num) {
+function square(num) {
   return multiply(num, num);
 }
 
-console.log(sqaure(5)); // 25
-console.log(sqaure(5) === 25); // true
-console.log(sqaure(-8)); // 64
+console.log(square(5)); // 25
+console.log(square(5) === 25); // true
+console.log(square(-8)); // 64
