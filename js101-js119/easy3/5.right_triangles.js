@@ -50,7 +50,7 @@ Algorithm:
 - write a function with a parameter for the integer
 - loop through the number, starting with index of 1
 - let spaces repeat an empty string for n amount of times - current index
-- let stars repeat n amount of times
+- let stars repeat the amount of times that matches the current index
 - log current spaces + stars within the loop
 */
  
