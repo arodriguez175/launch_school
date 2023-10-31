@@ -56,9 +56,9 @@ Algorithm:
  
 function triangle (n) {
   for (let i = 1; i <= n; i++) {
-    let spaces = ' '.repeat(n - i); // ----, ---, --, -
-    let stars = '*'.repeat(i); // *****, *****, *****, *****
-    console.log(spaces + stars); // ----*, ---**, --***, -****, ***** 
+    let spaces = ' '.repeat(n - i); // ----, ---, --, -, 
+    let stars = '*'.repeat(i); // *, **, ***, ****, *****
+    console.log(spaces + stars); // ----*, ---**, --***, -****, *****
   }
 }
 
