@@ -6,32 +6,59 @@
 
 let readlineSync = require("readline-sync");
 
-console.log("Welcome to Calculator!");
-
-console.log("What's the first number?");
-// save as a number since readlineSync.question always returns a string
-let number1 = Number(readlineSync.question());
-
-console.log("What's the second number?");
-let number2 = Number(readlineSync.question());
-
-console.log("What operation would you like to perform?");
-console.log("1) Add 2) Subtract 3) Multiply 4) Divide");
-let operation = readlineSync.question();
-
-let output;
-if (operation === "1") {
-  // "1" represents addition
-  output = number1 + number2;
-} else if (operation === "2") {
-  // "2" represents subtraction
-  output = number1 - number2;
-} else if (operation === "3") {
-  // "3" represents multiplication
-  output = number1 * number2;
-} else if (operation === "4") {
-  // "4" represents division
-  output = number1 / number2;
+// Add => to all log messages for neatness
+function prompt(message) {
+  console.log(`=> ${message}`);
 }
 
-console.log(`The result is ${output}`);
+prompt("Welcome to Calculator!");
+
+prompt("What's the first number?");
+// save as a number since readlineSync.question always returns a string
+let number1 = readlineSync.question();
+
+while (invalidNumber(number1)) {
+  prompt("Hmm... that doesn't look like a valid number.");
+  number1 = readlineSync.question();
+}
+
+function invalidNumber(number) {
+  return number.trimStart() === '' || Number.isNaN(Number(number));
+}
+
+prompt("What's the second number?");
+let number2 = readlineSync.question();
+
+while (invalidNumber(number2)) {
+  prompt("Hmm... that doesn't look like a valid number.");
+  number2 = readlineSync.question();
+}
+
+prompt("What operation would you like to perform?");
+prompt("1) Add 2) Subtract 3) Multiply 4) Divide");
+let operation = readlineSync.question();
+
+/* as long as the input isn't one of the values 1, 2, 3, or 4, keep asking the
+user for a valid operation number */
+while (!['1', '2', '3', '4'].includes(operation)) {
+  prompt('Must choose 1, 2, 3 or 4');
+  operation = readlineSync.question();
+}
+
+let output;
+switch (operation) {
+  case '1':
+    output = Number(number1) + Number(number2);
+    break;
+  case '2':
+    output = Number(number1) - Number(number2);
+    break;
+  case '3':
+    output = Number(number1) * Number(number2);
+    break;
+  case '4':
+    output = Number(number1) / Number(number2);
+    break;
+}
+
+prompt(`The result is ${output}`);
