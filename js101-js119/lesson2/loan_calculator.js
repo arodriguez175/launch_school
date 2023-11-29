@@ -1,7 +1,8 @@
 let readlineSync = require("readline-sync");
 
 function isInvalid(number) {
-  return number.trim() === '' || isNaN(number) || number < 0;
+  return number.trim() === '' || Number.isNaN(Number(number)) ||
+  Number(number) < 0;
 }
 
 console.log("Enter the loan amount (Example: 50000 for $50,000): ");
