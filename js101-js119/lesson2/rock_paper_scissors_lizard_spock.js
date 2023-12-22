@@ -5,19 +5,6 @@ function prompt(message) {
   console.log(`=> ${message}`);
 }
 
-// function playerWins(choice, computerChoice) {
-//   return (choice === 'rock' && computerChoice === 'scissors') ||
-//         (choice === 'rock' && computerChoice === 'lizard') ||
-//         (choice === 'paper' && computerChoice === 'rock') ||
-//         (choice === 'paper' && computerChoice === 'spock') ||
-//         (choice === 'scissors' && computerChoice === 'paper') ||
-//         (choice === 'scissors' && computerChoice === 'lizard') ||
-//         (choice === 'lizard' && computerChoice === 'paper') ||
-//         (choice === 'lizard' && computerChoice === 'spock') ||
-//         (choice === 'spock' && computerChoice === 'rock') ||
-//         (choice === 'spock' && computerChoice === 'scissors');
-// }
-
 const WINNING_COMBOS = {
   rock: ['scissors', 'lizard'],
   paper: ['rock', 'spock'],
