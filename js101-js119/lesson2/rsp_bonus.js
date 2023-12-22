@@ -1,5 +1,13 @@
 const readline = require('readline-sync');
-const VALID_CHOICES = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
+const VALID_CHOICES = [
+  'rock',
+  'paper',
+  'scissors',
+  'lizard',
+  'spock',
+  'fire',
+  'water'
+];
 
 function prompt(message) {
   console.log(`=> ${message}`);
@@ -11,6 +19,8 @@ const WINNING_COMBOS = {
   scissors: ['paper', 'lizard'],
   lizard: ['paper', 'spock'],
   spock: ['rock', 'scissors'],
+  fire: ['paper', 'lizard'],
+  water: ['fire', 'paper'],
 };
 
 function playerWins(choice, computerChoice) {
