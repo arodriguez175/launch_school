@@ -23,6 +23,19 @@ function prompt(message) {
   console.log(`=> ${message}`);
 }
 
+function greet() {
+  prompt(
+    `Welcome to RPS: Bonus! Here are the rules:
+    - rock beats scissors and lizard
+    - paper beats rock and spock
+    - scissors beats paper and lizard
+    - lizard beats paper and spock
+    - spock beats rock and scissors
+    - fire beats paper and lizard
+    - water beats fire and paper`
+  );
+}
+
 function playerWins(choice, computerChoice) {
   return WINNING_COMBOS[choice].includes(computerChoice);
 }
@@ -36,6 +49,8 @@ function displayWinner(choice, computerChoice) {
     prompt("Computer wins!");
   }
 }
+
+greet();
 
 while (true) {
   prompt(`Choose one: ${VALID_CHOICES.join(', ')}`);
