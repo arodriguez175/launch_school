@@ -81,5 +81,9 @@ while (true) {
     answer = readline.question().toLocaleLowerCase();
   }
 
+  if (answer) {
+    console.clear();
+  }
+
   if (answer[0] !== 'y') break; // out of outer while loop
 }
