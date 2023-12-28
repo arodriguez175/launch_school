@@ -76,7 +76,7 @@ while (true) {
   prompt('Do you want to play again (y/n)?');
   let answer = readline.question().toLocaleLowerCase();
 
-  while (answer[0] !== 'n' && answer[0] !== 'y') {
+  while ((answer.length !== 1) || (answer[0] !== 'n' && answer[0] !== 'y')) {
     prompt('Please enter "y" or "n".');
     answer = readline.question().toLocaleLowerCase();
   }
