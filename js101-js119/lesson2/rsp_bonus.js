@@ -9,10 +9,6 @@ const VALID_CHOICES = [
   'water'
 ];
 
-function prompt(message) {
-  console.log(`=> ${message}`);
-}
-
 const WINNING_COMBOS = {
   rock: ['scissors', 'lizard'],
   paper: ['rock', 'spock'],
@@ -22,6 +18,10 @@ const WINNING_COMBOS = {
   fire: ['paper', 'lizard'],
   water: ['fire', 'paper'],
 };
+
+function prompt(message) {
+  console.log(`=> ${message}`);
+}
 
 function playerWins(choice, computerChoice) {
   return WINNING_COMBOS[choice].includes(computerChoice);
