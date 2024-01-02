@@ -1,13 +1,13 @@
 const readline = require('readline-sync');
-const VALID_CHOICES = [
-  'rock',
-  'paper',
-  'scissors',
-  'lizard',
-  'spock',
-  'fire',
-  'water'
-];
+const VALID_CHOICES = {
+  r: 'rock',
+  p: 'paper',
+  s: 'scissors',
+  l: 'lizard',
+  sp: 'spock',
+  f: 'fire',
+  w: 'water'
+};
 
 const WINNING_COMBOS = {
   rock: ['scissors', 'lizard'],
@@ -32,7 +32,16 @@ function greet() {
     - lizard beats paper and spock
     - spock beats rock and scissors
     - fire beats paper and lizard
-    - water beats fire and paper`
+    - water beats fire and paper
+    
+    Enter one of the following keys for a choice:
+    - r for rock
+    - p for paper
+    - s for scissors
+    - l for lizard
+    - sp for spock
+    - f for fire
+    - w for water`
   );
 }
 
@@ -53,21 +62,26 @@ function displayWinner(choice, computerChoice) {
 greet();
 
 while (true) {
-  prompt(`Choose one: ${VALID_CHOICES.join(', ')}`);
-  let choice = readline.question();
+  prompt(`Choose one: ${Object.values(VALID_CHOICES).join(', ')}`);
+  let choice = readline.question().toLocaleLowerCase();
 
   /*
-  if the array from VALID_CHOICES doesn't include the user choice, keep
-  displaying the error message and asking for input.
+  If the user enters a choice that does not match VALID_CHOICES,
+  keep displaying the error message and asking for input
   */
-  while (!VALID_CHOICES.includes(choice)) {
+  while (!Object.keys(VALID_CHOICES).includes(choice)) {
     prompt("That's not a vaid choice");
-    choice = readline.question();
+    choice = readline.question().toLocaleLowerCase();
   }
 
-  // for computer choice
-  let randomIndex = Math.floor(Math.random() * VALID_CHOICES.length);
-  let computerChoice = VALID_CHOICES[randomIndex];
+  choice = VALID_CHOICES[choice]; // Map the choice back to the full word
+
+  // For computer choice
+  let randomIndex = Math.floor(
+    Math.random() * Object.values(VALID_CHOICES).length
+  );
+
+  let computerChoice = Object.values(VALID_CHOICES)[randomIndex];
 
   prompt(`You chose ${choice}, computer chose ${computerChoice}`);
 
@@ -81,9 +95,7 @@ while (true) {
     answer = readline.question().toLocaleLowerCase();
   }
 
-  if (answer) {
-    console.clear();
-  }
+  if (answer[0] !== 'y') break;
 
-  if (answer[0] !== 'y') break; // out of outer while loop
+  console.clear();
 }
