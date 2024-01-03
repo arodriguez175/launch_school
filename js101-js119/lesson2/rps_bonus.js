@@ -10,13 +10,13 @@ const VALID_CHOICES = {
 };
 
 const WINNING_COMBOS = {
-  rock: ['scissors', 'lizard'],
-  paper: ['rock', 'spock'],
-  scissors: ['paper', 'lizard'],
-  lizard: ['paper', 'spock'],
-  spock: ['rock', 'scissors'],
-  fire: ['paper', 'lizard'],
-  water: ['fire', 'paper'],
+  rock: ['scissors', 'lizard', 'fire'],
+  paper: ['rock', 'spock', 'water'],
+  scissors: ['paper', 'lizard', 'spock'],
+  lizard: ['paper', 'spock', 'water'],
+  spock: ['rock', 'scissors', 'fire'],
+  fire: ['paper', 'lizard', 'scissors'],
+  water: ['fire', 'rock', 'spock'],
 };
 
 function prompt(message) {
