@@ -94,6 +94,9 @@ while (true) {
     playerScore += 1;
     console.log(`Player Score: ${playerScore}`);
     console.log(`Computer Score: ${computerScore}`);
+  } else if (choice === computerChoice) {
+    console.log(`Player Score: ${playerScore}`);
+    console.log(`Computer Score: ${computerScore}`);
   } else {
     computerScore += 1;
     console.log(`Player Score: ${playerScore}`);
