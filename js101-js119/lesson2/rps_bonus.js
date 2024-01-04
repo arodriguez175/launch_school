@@ -19,6 +19,9 @@ const WINNING_COMBOS = {
   water: ['fire', 'rock', 'spock'],
 };
 
+let playerScore = 0;
+let computerScore = 0;
+
 function prompt(message) {
   console.log(`=> ${message}`);
 }
@@ -86,6 +89,16 @@ while (true) {
   prompt(`You chose ${choice}, computer chose ${computerChoice}`);
 
   displayWinner(choice, computerChoice);
+
+  if (playerWins(choice, computerChoice)) {
+    playerScore += 1;
+    console.log(`Player Score: ${playerScore}`);
+    console.log(`Computer Score: ${computerScore}`);
+  } else {
+    computerScore += 1;
+    console.log(`Player Score: ${playerScore}`);
+    console.log(`Computer Score: ${computerScore}`);
+  }
 
   prompt('Do you want to play again (y/n)?');
   let answer = readline.question().toLocaleLowerCase();
