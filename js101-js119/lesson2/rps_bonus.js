@@ -21,6 +21,7 @@ const WINNING_COMBOS = {
 
 let playerScore = 0;
 let computerScore = 0;
+let matchCounter = 1;
 
 function prompt(message) {
   console.log(`=> ${message}`);
@@ -65,6 +66,8 @@ function displayWinner(choice, computerChoice) {
 greet();
 
 while (true) {
+  console.log(`Match ${matchCounter}`);
+
   prompt(`Choose one: ${Object.values(VALID_CHOICES).join(', ')}`);
   let choice = readline.question().toLocaleLowerCase();
 
@@ -103,6 +106,21 @@ while (true) {
     console.log(`Computer Score: ${computerScore}`);
   }
 
+  if (playerScore === 3) {
+    console.log('You are the grand winner!');
+    playerScore = 0;
+    computerScore = 0;
+    break;
+  } else if (computerScore === 3) {
+    console.log('Computer is the grand winner!');
+    playerScore = 0;
+    computerScore = 0;
+    break;
+  } else if (matchCounter === 5) {
+    console.log("No grand winner, it's a tie!");
+    break;
+  }
+
   prompt('Do you want to play again (y/n)?');
   let answer = readline.question().toLocaleLowerCase();
 
@@ -111,7 +129,11 @@ while (true) {
     answer = readline.question().toLocaleLowerCase();
   }
 
-  if (answer[0] !== 'y') break;
+  if (answer[0] !== 'y') {
+    break;
+  } else {
+    matchCounter += 1;
+  }
 
   console.clear();
 }
