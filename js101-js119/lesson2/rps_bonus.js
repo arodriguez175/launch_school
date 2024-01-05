@@ -116,16 +116,15 @@ while (true) {
 
   if (playerWins(choice, computerChoice)) {
     playerScore += 1;
-    prompt(`Player Score: ${playerScore}`);
-    prompt(`Computer Score: ${computerScore}`);
   } else if (choice === computerChoice) {
-    prompt(`Player Score: ${playerScore}`);
-    prompt(`Computer Score: ${computerScore}`);
+    playerScore += 0;
+    computerScore += 0;
   } else {
     computerScore += 1;
-    prompt(`Player Score: ${playerScore}`);
-    prompt(`Computer Score: ${computerScore}`);
   }
+
+  prompt(`Player Score: ${playerScore}`);
+  prompt(`Computer Score: ${computerScore}`);
 
   if (playerScore === 3) {
     prompt('You are the grand winner!');
