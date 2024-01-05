@@ -116,31 +116,31 @@ while (true) {
 
   if (playerWins(choice, computerChoice)) {
     playerScore += 1;
-    console.log(`Player Score: ${playerScore}`);
-    console.log(`Computer Score: ${computerScore}`);
+    prompt(`Player Score: ${playerScore}`);
+    prompt(`Computer Score: ${computerScore}`);
   } else if (choice === computerChoice) {
-    console.log(`Player Score: ${playerScore}`);
-    console.log(`Computer Score: ${computerScore}`);
+    prompt(`Player Score: ${playerScore}`);
+    prompt(`Computer Score: ${computerScore}`);
   } else {
     computerScore += 1;
-    console.log(`Player Score: ${playerScore}`);
-    console.log(`Computer Score: ${computerScore}`);
+    prompt(`Player Score: ${playerScore}`);
+    prompt(`Computer Score: ${computerScore}`);
   }
 
   if (playerScore === 3) {
-    console.log('You are the grand winner!');
+    prompt('You are the grand winner!');
     resetScores();
     askToPlayAgain();
     if (answer[0] !== 'y') break;
 
   } else if (computerScore === 3) {
-    console.log('Computer is the grand winner!');
+    prompt('Computer is the grand winner!');
     resetScores();
     askToPlayAgain();
     if (answer[0] !== 'y') break;
 
   } else if (matchCounter > 5) {
-    console.log("No grand winner, it's a tie!");
+    prompt("No grand winner, it's a tie!");
     resetScores();
     askToPlayAgain();
     if (answer[0] !== 'y') break;
