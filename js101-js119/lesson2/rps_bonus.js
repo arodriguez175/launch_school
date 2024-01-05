@@ -95,7 +95,7 @@ while (true) {
   keep displaying the error message and asking for input
   */
   while (!Object.keys(VALID_CHOICES).includes(choice)) {
-    prompt("That's not a vaid choice");
+    prompt("That's not a valid choice");
     choice = readline.question().toLowerCase();
   }
 
