@@ -63,13 +63,32 @@ function displayWinner(choice, computerChoice) {
   }
 }
 
+function resetScores() {
+  playerScore = 0;
+  computerScore = 0;
+  matchCounter = 1;
+}
+
+let answer;
+function askToPlayAgain() {
+  prompt('Do you want to play again (y/n)?');
+  answer = readline.question().toLowerCase();
+
+  while ((answer.length !== 1) || (answer[0] !== 'n' && answer[0] !== 'y')) {
+    prompt('Please enter "y" or "n".');
+    answer = readline.question().toLowerCase();
+  }
+
+  console.clear();
+}
+
 greet();
 
 while (true) {
   console.log(`Match ${matchCounter}`);
 
   prompt(`Choose one: ${Object.values(VALID_CHOICES).join(', ')}`);
-  let choice = readline.question().toLocaleLowerCase();
+  let choice = readline.question().toLowerCase();
 
   /*
   If the user enters a choice that does not match VALID_CHOICES,
@@ -77,7 +96,7 @@ while (true) {
   */
   while (!Object.keys(VALID_CHOICES).includes(choice)) {
     prompt("That's not a vaid choice");
-    choice = readline.question().toLocaleLowerCase();
+    choice = readline.question().toLowerCase();
   }
 
   choice = VALID_CHOICES[choice]; // Map the choice back to the full word
@@ -92,6 +111,8 @@ while (true) {
   prompt(`You chose ${choice}, computer chose ${computerChoice}`);
 
   displayWinner(choice, computerChoice);
+
+  matchCounter += 1;
 
   if (playerWins(choice, computerChoice)) {
     playerScore += 1;
@@ -108,32 +129,20 @@ while (true) {
 
   if (playerScore === 3) {
     console.log('You are the grand winner!');
-    playerScore = 0;
-    computerScore = 0;
-    break;
+    resetScores();
+    askToPlayAgain();
+    if (answer[0] !== 'y') break;
+
   } else if (computerScore === 3) {
     console.log('Computer is the grand winner!');
-    playerScore = 0;
-    computerScore = 0;
-    break;
+    resetScores();
+    askToPlayAgain();
+    if (answer[0] !== 'y') break;
+
   } else if (matchCounter === 5) {
     console.log("No grand winner, it's a tie!");
-    break;
+    resetScores();
+    askToPlayAgain();
+    if (answer[0] !== 'y') break;
   }
-
-  prompt('Do you want to play again (y/n)?');
-  let answer = readline.question().toLocaleLowerCase();
-
-  while ((answer.length !== 1) || (answer[0] !== 'n' && answer[0] !== 'y')) {
-    prompt('Please enter "y" or "n".');
-    answer = readline.question().toLocaleLowerCase();
-  }
-
-  if (answer[0] !== 'y') {
-    break;
-  } else {
-    matchCounter += 1;
-  }
-
-  console.clear();
 }
