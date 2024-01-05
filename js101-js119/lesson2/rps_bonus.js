@@ -81,7 +81,7 @@ prompt(
   
   Whoever wins 3 matches first is the grand winner and the game will end.
   If there is a tie, another match will be started until the tie is broken
-  or the game lasts 5 matches. Good luck!`
+  or after 5 matches. Good luck!`
 );
 
 while (true) {
@@ -139,7 +139,7 @@ while (true) {
     askToPlayAgain();
     if (answer[0] !== 'y') break;
 
-  } else if (matchCounter === 5) {
+  } else if (matchCounter > 5) {
     console.log("No grand winner, it's a tie!");
     resetScores();
     askToPlayAgain();
