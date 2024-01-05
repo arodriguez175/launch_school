@@ -85,7 +85,7 @@ prompt(
 );
 
 while (true) {
-  console.log(`Match ${matchCounter}`);
+  console.log(`\nMatch ${matchCounter}`);
 
   prompt(`Choose one: ${Object.values(VALID_CHOICES).join(', ')}`);
   let choice = readline.question().toLowerCase();
