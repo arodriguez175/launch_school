@@ -27,28 +27,6 @@ function prompt(message) {
   console.log(`=> ${message}`);
 }
 
-function greet() {
-  prompt(
-    `Welcome to RPS: Bonus! Here are the rules:
-    - rock beats scissors and lizard
-    - paper beats rock and spock
-    - scissors beats paper and lizard
-    - lizard beats paper and spock
-    - spock beats rock and scissors
-    - fire beats paper and lizard
-    - water beats fire and paper
-    
-    Enter one of the following keys for a choice:
-    - r for rock
-    - p for paper
-    - s for scissors
-    - l for lizard
-    - sp for spock
-    - f for fire
-    - w for water`
-  );
-}
-
 function playerWins(choice, computerChoice) {
   return WINNING_COMBOS[choice].includes(computerChoice);
 }
@@ -82,7 +60,29 @@ function askToPlayAgain() {
   console.clear();
 }
 
-greet();
+prompt(
+  `Welcome to RPS: Bonus! Here are the rules:
+  - rock beats scissors, lizard, fire
+  - paper beats rock, spock, water
+  - scissors beats paper, lizard, spock
+  - lizard beats paper, spock, water
+  - spock beats rock, scissors, fire
+  - fire beats paper, lizard, scissors
+  - water beats fire, rock, spock
+  
+  Enter one of the following keys for a choice:
+  - r for rock
+  - p for paper
+  - s for scissors
+  - l for lizard
+  - sp for spock
+  - f for fire
+  - w for water
+  
+  Whoever wins 3 matches first is the grand winner and the game will end.
+  If there is a tie, another match will be started until the tie is broken
+  or the game lasts 5 matches. Good luck!`
+);
 
 while (true) {
   console.log(`Match ${matchCounter}`);
